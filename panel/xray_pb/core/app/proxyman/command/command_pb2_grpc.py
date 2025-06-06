@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from core.app.proxyman.command import command_pb2 as core_dot_app_dot_proxyman_dot_command_dot_command__pb2
+from . import command_pb2 as core_dot_app_dot_proxyman_dot_command_dot_command__pb2
 
 GRPC_GENERATED_VERSION = '1.72.1'
 GRPC_VERSION = grpc.__version__
