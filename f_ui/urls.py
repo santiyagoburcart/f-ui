@@ -17,7 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Imports for Simple JWT token views
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView, # Optional: if you want to verify tokens
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/panel/', include('panel.urls')),
+    path('api/panel/', include('panel.urls')), # Existing path to panel app
+
+    # JWT Token Authentication URLs
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'), # Optional
 ]
